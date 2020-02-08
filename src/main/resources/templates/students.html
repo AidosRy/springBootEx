@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<form action="/addstudent" method="post">
+    NAME : <input type="text" name="name">
+    SURNAME : <input type="text" name="surname">
+    ADMISSION YEAR : <input type="number" name="year">
+    <button class="btn btn-danger">ADD</button>
+</form>
+<table cellpadding="20">
+    <tr>
+        <td>
+            ID
+        </td>
+        <td>
+            NAME
+        </td>
+        <td>
+            SURNAME
+        </td>
+        <td>
+            ADMISSION YEAR
+        </td>
+        <td>
+            EDIT
+        </td>
+    </tr>
+    <tr th:each = "item : ${students}">
+        <td th:text = "${item.id}"></td>
+        <td th:text = "${item.name}"></td>
+        <td th:text = "${item.surname}"></td>
+        <td th:text = "${item.yearOfAddmission}"></td>
+        <td>
+            <a th:href = "@{'/detailsstud/'+${item.id}}">edit</a>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>
